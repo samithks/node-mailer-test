@@ -29,6 +29,7 @@ export const addEmailAccount = async (req: Request, res: Response) => {
             },
         });
         // to validate the account
+        // Please comment if you don't want to validate the account other wise it will wait for the account to be validated
         await transporter.verify();
         const results = await AppDataSource.getRepository(Account).save(account)
         return res.status(StatusCodes.CREATED).json({ message: ReasonPhrases.CREATED, results });
